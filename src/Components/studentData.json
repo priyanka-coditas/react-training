@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Darth Vader",
+    "class": 10,
+    "data": {
+      "Semister": "1st",
+      "hindi": "15",
+      "english": "90",
+      "physics": "50"
+    }
+  },
+  {
+    "name": "Along Nader",
+    "class": 11,
+    "data": {
+      "Semister": "2nd",
+      "science": "15",
+      "english": "40",
+      "physics": "60"
+    }
+  },
+  {
+    "name": "Rush Bee",
+    "class": 11,
+    "data": {
+      "Semister": "2nd",
+      "science": "55",
+      "english": "40",
+      "chemistry": "60"
+    }
+  }
+]
