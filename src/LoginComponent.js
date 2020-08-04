@@ -17,19 +17,20 @@ import "./Components/index.scss";
 import App from "./App";
 import "./App.css";
 import Auth from "./Auth";
-export const history = createBrowserHistory();
 class LoginComponent extends React.Component {
   constructor(props) {
     super(props);
+   
     console.log("login prop", props);
     this.state = {
-      err: ""
+      err: "",
     };
+    
   }
-   handleClick(e) {
-    // code to handle callback
-  }
-
+  // redirectToHome = () => {
+  //   const { history } = this.props;
+  //   console.log('history',history);
+  //  }
   login(e) {
     e.preventDefault();
     var username = e.target.elements.username.value;
@@ -39,33 +40,36 @@ class LoginComponent extends React.Component {
       (username === "admin" && password === "p") ||
       (username === "user" && password === "p")
     ) {
-      
+      console.log('before routing');
+      this.props.history.push({
+        pathname: "/dashboard",
+        state: { detail: 'admin'},
+      });
+      this.props.isLogin();
       Auth.authenticate();
       Auth.getAuth();
       
-      this.props.history.push({
-        pathname: "/dashboard",
-        state: { detail: username},
-      });
-
+      // this.props.isLogin();
+      console.log('after routing');
       return true;
     } else {
       this.setState({
         err: "Invalid",
       });
     }
-    
   }
   render() {
     let format = {
       color: "red",
     };
+    
     return (
       <div className="Form-container">
         <h3>Login</h3>
         <span style={format}>{this.state.err != "" ? this.state.err : ""}</span>
 
         <form method="post" onSubmit={this.login.bind(this)}>
+          {/* <form method="post"> */}
           <div className="items">
             Username <input type="text" name="username"></input>
           </div>
@@ -74,12 +78,15 @@ class LoginComponent extends React.Component {
             Password <input type="password" name="password"></input>
           </div>
           <br></br>
-          <div className="items"  >
-            <button type="submit"  value="Login" onClick={this.handleClick.bind(this)} >Login</button>
+          <div className="items">
+            {/* <button type="submit" >
+              Login
+            </button> */}
+            <input type="submit" Value="Login"></input>
           </div>
         </form>
       </div>
     );
   }
 }
-export default LoginComponent;
+export default withRouter(LoginComponent);

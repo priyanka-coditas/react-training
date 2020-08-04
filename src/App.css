@@ -34,3 +34,16 @@ a{
 margin: 0 auto;
 width: 50%;
 }
+.Btn{
+  color: white;
+  background: DodgerBlue;
+  padding: 10px 15px;
+  margin:10px;
+}
+.Btn-disable{
+  color: white;
+  background: grey;
+  padding: 10px 15px;
+  margin:10px; 
+  pointer-events: none;
+}
